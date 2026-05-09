@@ -1,0 +1,35 @@
+.profile-screen { max-width: 800px; margin: 0 auto; padding: 32px 24px 60px; }
+.profile-header { text-align: center; margin-bottom: 40px; }
+.profile-avatar { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--purple2)); display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 700; color: #fff; margin: 0 auto 16px; border: 3px solid var(--border); }
+.profile-name { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.profile-email { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+.profile-since { font-size: 12px; color: var(--muted); }
+.profile-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+.profile-section h2 { font-size: 1.5rem; margin-bottom: 20px; }
+.pref-form { display: flex; flex-direction: column; gap: 16px; }
+.pref-genres { display: flex; flex-wrap: wrap; gap: 8px; }
+.pref-genre-check { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--bg3); border: 1px solid var(--border); border-radius: 100px; cursor: pointer; font-size: 13px; color: var(--muted); transition: all var(--transition); }
+.pref-genre-check input { display: none; }
+.pref-genre-check.checked { background: rgba(124,92,252,0.15); border-color: var(--purple); color: var(--purple2); }
+.pref-row { display: flex; gap: 12px; }
+.pref-row .form-group { flex: 1; }
+.pref-save { padding: 12px 24px; background: var(--purple); color: #fff; font-size: 14px; font-weight: 600; border-radius: var(--radius-sm); border: none; cursor: pointer; align-self: flex-start; transition: all var(--transition); }
+.pref-save:hover { box-shadow: 0 4px 20px var(--purple-glow); }
+.profile-bookings { display: flex; flex-direction: column; gap: 12px; }
+.profile-booking-item { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--bg3); border-radius: var(--radius-sm); }
+.profile-booking-poster { width: 50px; height: 75px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.profile-booking-poster img { width: 100%; height: 100%; object-fit: cover; }
+.profile-booking-info { flex: 1; }
+.profile-booking-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.profile-booking-meta { font-size: 12px; color: var(--muted); }
+.profile-stats { display: flex; gap: 16px; margin-bottom: 20px; }
+.stat-card { flex: 1; background: var(--bg3); border-radius: var(--radius-sm); padding: 20px; text-align: center; }
+.stat-number { font-size: 28px; font-weight: 700; color: var(--purple); font-family: 'Bebas Neue', sans-serif; }
+.stat-label { font-size: 12px; color: var(--muted); }
+.profile-logout { padding: 14px 32px; background: transparent; border: 1px solid var(--danger); color: var(--danger); font-size: 14px; font-weight: 600; border-radius: var(--radius); cursor: pointer; transition: all var(--transition); width: 100%; }
+.profile-logout:hover { background: rgba(239,68,68,0.1); }
+@media (max-width: 768px) {
+  .profile-screen { padding: 24px 16px 80px; }
+  .pref-row { flex-direction: column; }
+  .profile-stats { flex-direction: column; }
+}
