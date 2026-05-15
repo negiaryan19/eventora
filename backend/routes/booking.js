@@ -11,9 +11,12 @@ const router = express.Router();
 // POST /api/booking/create-order
 router.post('/create-order', auth, async (req, res) => {
   try {
-    const { movieId, movieTitle, moviePoster, seats, showtime, totalAmount } = req.body;
+    const { movieId, movieTitle, moviePoster, eventId, eventTitle, seats, showtime, totalAmount } = req.body;
 
-    if (!movieId || !movieTitle || !seats || !showtime || !totalAmount) {
+    const title = movieTitle || eventTitle;
+    const id = movieId || eventId;
+
+    if (!id || !title || !totalAmount) {
       return res.status(400).json({ error: 'Missing required booking fields.' });
     }
 
@@ -27,11 +30,11 @@ router.post('/create-order', auth, async (req, res) => {
     // Save pending booking
     const booking = new Booking({
       userId: req.user.id,
-      movieId,
-      movieTitle,
+      movieId: id, // Using movieId to store generic ID for now
+      movieTitle: title, // Generic title
       moviePoster: moviePoster || '',
-      seats,
-      showtime,
+      seats: seats || ['General Admission'],
+      showtime: showtime || 'TBA',
       totalAmount,
       razorpayOrderId: order.id,
       status: 'pending',
