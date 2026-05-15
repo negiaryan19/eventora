@@ -1,0 +1,421 @@
+Debugger listening on ws://127.0.0.1:52752/0e758bd3-e859-4f67-b06e-2a9406690eb2
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+
+> eventora-backend@1.0.0 dev
+> nodemon server.js
+
+Debugger listening on ws://127.0.0.1:52755/9d57dc78-e065-4f27-925f-4923f065552f
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:52757/b6e58bbe-9c3a-4b2a-b0ef-868d784d3462
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+Debugger ending on ws://127.0.0.1:52755/9d57dc78-e065-4f27-925f-4923f065552f
+For help, see: https://nodejs.org/en/docs/inspector
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[32m[nodemon] restarting child process[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:53624/f8c8382c-98f6-4053-8c20-d2ef35631f74
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:53624/f8c8382c-98f6-4053-8c20-d2ef35631f74
+For help, see: https://nodejs.org/en/docs/inspector
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:53636/19f36b5f-2ba0-40b2-947d-bbac805d5b45
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:53636/19f36b5f-2ba0-40b2-947d-bbac805d5b45
+For help, see: https://nodejs.org/en/docs/inspector
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+TMDB trending error: getaddrinfo ENOTFOUND api.themoviedb.org
+TMDB trending error: getaddrinfo ENOTFOUND api.themoviedb.org
+TMDB trending error: getaddrinfo ENOTFOUND api.themoviedb.org
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:54031/035576fc-56b1-4904-a9f3-640e53290e06
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:54031/035576fc-56b1-4904-a9f3-640e53290e06
+For help, see: https://nodejs.org/en/docs/inspector
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:54123/ffcdd133-a3be-4b4a-b914-777019ddd9af
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:54123/ffcdd133-a3be-4b4a-b914-777019ddd9af
+For help, see: https://nodejs.org/en/docs/inspector
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+TMDB now playing error: getaddrinfo ENOTFOUND api.themoviedb.org
+TMDB trending error: getaddrinfo ENOTFOUND api.themoviedb.org
+TMDB upcoming error: getaddrinfo ENOTFOUND api.themoviedb.org
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:54264/90c1e82f-4ab1-49cc-ba36-142d3096c733
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:54264/90c1e82f-4ab1-49cc-ba36-142d3096c733
+For help, see: https://nodejs.org/en/docs/inspector
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:59:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:54771/4393cd42-5d7f-4f1e-8739-66215d430a7a
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:54771/4393cd42-5d7f-4f1e-8739-66215d430a7a
+For help, see: https://nodejs.org/en/docs/inspector
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:59:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:54788/e35eeaa9-7682-45fe-aa46-f228f44b9dc2
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:54788/e35eeaa9-7682-45fe-aa46-f228f44b9dc2
+For help, see: https://nodejs.org/en/docs/inspector
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:59:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Debugger listening on ws://127.0.0.1:55637/96e4c755-b15b-4670-b087-5fa617c6ba07
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+Debugger ending on ws://127.0.0.1:55637/96e4c755-b15b-4670-b087-5fa617c6ba07
+For help, see: https://nodejs.org/en/docs/inspector
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:59:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+AI recommend error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+AI recommend error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:63:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+AI recommend error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+AI recommend error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+AI recommend error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+TMDB movie detail error: Invalid IP address: undefined
+TMDB similar error: Invalid IP address: undefined
+TMDB trending error: Invalid IP address: undefined
+TMDB upcoming error: Invalid IP address: undefined
+TMDB now playing error: Invalid IP address: undefined
+TMDB trending error: Invalid IP address: undefined
+TMDB upcoming error: Invalid IP address: undefined
+TMDB now playing error: Invalid IP address: undefined
+TMDB trending error: Invalid IP address: undefined
+TMDB trending error: Invalid IP address: undefined
+TMDB now playing error: Invalid IP address: undefined
+TMDB upcoming error: Invalid IP address: undefined
+TMDB trending error: Invalid IP address: undefined
+TMDB trending error: Invalid IP address: undefined
+TMDB now playing error: Invalid IP address: undefined
+TMDB upcoming error: Invalid IP address: undefined
+TMDB search error: Invalid IP address: undefined
+TMDB movie detail error: Invalid IP address: undefined
+TMDB similar error: Invalid IP address: undefined
+TMDB trending error: Invalid IP address: undefined
+TMDB upcoming error: Invalid IP address: undefined
+TMDB now playing error: Invalid IP address: undefined
+❌ Welcome email error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2bd5bd5f2cesm42551785ad.14 - gsmtp
+TMDB search error: Invalid IP address: undefined
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:75:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:75:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:75:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+🚀 Eventora backend running on http://localhost:5001
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:75:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:75:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+✅ MongoDB connected
+node:events:487
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5001
+    at Server.setupListenHandle [as _listen2] (node:net:2008:16)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2170:7)
+    at app.listen (/Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/node_modules/express/lib/application.js:635:24)
+    at /Users/aryannegi/Documents/Codex/2026-05-08/claude-finished-the-response-you-said/eventora 2/backend/server.js:75:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:2044:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 5001
+}
+
+Node.js v24.15.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m

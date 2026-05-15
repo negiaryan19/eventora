@@ -32,6 +32,12 @@ const userSchema = new mongoose.Schema({
     budget: { type: String, default: '' },
     city: { type: String, default: '' },
   },
+  resetPasswordToken: {
+    type: String,
+  },
+  resetPasswordExpires: {
+    type: Date,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

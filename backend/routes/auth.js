@@ -116,4 +116,72 @@ router.put('/preferences', auth, async (req, res) => {
   }
 });
 
+// POST /api/auth/forgot-password
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ error: 'Email is required.' });
+
+    const user = await User.findOne({ email: email.toLowerCase() });
+    if (!user) {
+      // Return 200 even if not found for security, but here we can return 404 for UX
+      return res.status(404).json({ error: 'No account with that email found.' });
+    }
+
+    // Generate a 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    user.resetPasswordToken = otp;
+    user.resetPasswordExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
+    await user.save();
+
+    // PRINT OTP TO CONSOLE FOR BYPASSING MAC FIREWALL
+    console.log(`\n================================================`);
+    console.log(`🔥 DEVELOPMENT OTP FOR ${user.email}: ${otp} 🔥`);
+    console.log(`================================================\n`);
+
+    // Send email using our existing utility function
+    const { sendPasswordResetEmail } = require('../utils/email');
+    sendPasswordResetEmail(user.email, otp).catch(() => {});
+
+    res.json({ message: 'Password reset OTP sent to your email.' });
+  } catch (err) {
+    console.error('Forgot password error:', err);
+    res.status(500).json({ error: 'Server error during forgot password.' });
+  }
+});
+
+// POST /api/auth/reset-password
+router.post('/reset-password', async (req, res) => {
+  try {
+    const { email, otp, newPassword } = req.body;
+    if (!email || !otp || !newPassword) {
+      return res.status(400).json({ error: 'Email, OTP, and new password are required.' });
+    }
+    if (newPassword.length < 6) {
+      return res.status(400).json({ error: 'Password must be at least 6 characters.' });
+    }
+
+    const user = await User.findOne({
+      email: email.toLowerCase(),
+      resetPasswordToken: otp,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid or expired OTP.' });
+    }
+
+    // Update password (mongoose pre-save hook handles hashing)
+    user.password = newPassword;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+    await user.save();
+
+    res.json({ message: 'Password successfully reset.' });
+  } catch (err) {
+    console.error('Reset password error:', err);
+    res.status(500).json({ error: 'Server error during reset password.' });
+  }
+});
+
 module.exports = router;

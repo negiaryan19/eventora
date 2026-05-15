@@ -31,7 +31,7 @@ router.post('/recommend', async (req, res) => {
     res.json(recommendations);
   } catch (err) {
     console.error('AI recommend error:', err.message);
-    res.status(500).json({ error: 'AI recommendation failed. Please try again.' });
+    res.status(500).json({ error: 'AI recommendation failed: ' + err.message });
   }
 });
 
@@ -71,7 +71,7 @@ router.post('/chat', async (req, res) => {
     res.json({ reply: response.text() });
   } catch (err) {
     console.error('AI chat error:', err.message);
-    res.status(500).json({ error: 'AI chat failed. Please try again.' });
+    res.status(500).json({ error: 'AI chat failed: ' + err.message });
   }
 });
 

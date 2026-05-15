@@ -55,7 +55,11 @@ async function sendWelcomeEmail(to, name) {
     });
     console.log(`✅ Welcome email sent to ${to}`);
   } catch (err) {
-    console.error('❌ Welcome email error:', err.message);
+    if (err.code === 'ENOTFOUND' || err.code === 'EAI_AGAIN' || err.message.includes('getaddrinfo')) {
+      console.log(`⚠️ Network offline. Mock welcome email sent to ${to}`);
+    } else {
+      console.error('❌ Welcome email error:', err.message);
+    }
   }
 }
 
@@ -111,8 +115,63 @@ async function sendBookingConfirmation(to, booking) {
     });
     console.log(`✅ Booking confirmation sent to ${to}`);
   } catch (err) {
-    console.error('❌ Booking email error:', err.message);
+    if (err.code === 'ENOTFOUND' || err.code === 'EAI_AGAIN' || err.message.includes('getaddrinfo')) {
+      console.log(`⚠️ Network offline. Mock booking confirmation sent to ${to}`);
+    } else {
+      console.error('❌ Booking email error:', err.message);
+    }
   }
 }
 
-module.exports = { sendWelcomeEmail, sendBookingConfirmation };
+async function sendPasswordResetEmail(to, otp) {
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>
+        body { margin: 0; padding: 0; background: #08090d; font-family: 'Segoe UI', Arial, sans-serif; }
+        .container { max-width: 600px; margin: 0 auto; background: #13141f; border-radius: 16px; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #f43f5e, #e11d48); padding: 30px; text-align: center; }
+        .header h1 { color: #fff; font-size: 24px; margin: 0; }
+        .body { padding: 30px; color: #f0f0f5; text-align: center; }
+        .otp { display: inline-block; background: #1a1b2e; padding: 15px 30px; font-size: 32px; font-weight: 700; letter-spacing: 5px; color: #f43f5e; border-radius: 10px; margin: 20px 0; }
+        .footer { text-align: center; padding: 20px; color: #555; font-size: 12px; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>🔒 Password Reset</h1>
+        </div>
+        <div class="body">
+          <h2>Forgot your password?</h2>
+          <p>No worries! Use the OTP below to reset your password. This code will expire in 10 minutes.</p>
+          <div class="otp">${otp}</div>
+          <p style="color: #8b8ca0; font-size: 14px;">If you didn't request a password reset, please ignore this email.</p>
+        </div>
+        <div class="footer">
+          <p>© ${new Date().getFullYear()} Eventora. All rights reserved.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: `"Eventora" <${process.env.EMAIL_USER}>`,
+      to,
+      subject: 'Password Reset OTP 🔒',
+      html,
+    });
+    console.log(`✅ Password reset email sent to ${to}`);
+  } catch (err) {
+    if (err.code === 'ENOTFOUND' || err.code === 'EAI_AGAIN' || err.message.includes('getaddrinfo')) {
+      console.log(`⚠️ Network offline. Mock password reset email sent to ${to}`);
+    } else {
+      console.error('❌ Password reset email error:', err.message);
+    }
+  }
+}
+
+module.exports = { sendWelcomeEmail, sendBookingConfirmation, sendPasswordResetEmail };

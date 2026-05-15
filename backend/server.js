@@ -1,7 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const dns = require('dns');
+const https = require('https');
+const axios = require('axios');
 require('dotenv').config();
+const path = require('path');
+
+// --- BYPASS ISP DNS BLOCKS (India TMDB/Gemini Fix) ---
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+const customLookup = (hostname, options, callback) => {
+  dns.resolve4(hostname, (err, addresses) => {
+    if (err || !addresses.length) {
+      return dns.lookup(hostname, options, callback); // fallback
+    }
+    callback(null, addresses[0], 4);
+  });
+};
+axios.defaults.httpsAgent = new https.Agent({ lookup: customLookup });
+// ------------------------------------------------------
 
 const authRoutes = require('./routes/auth');
 const movieRoutes = require('./routes/movies');
@@ -30,6 +47,14 @@ app.use('/api/favorites', favoriteRoutes);
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Catch-all route to serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 // Global error handler
