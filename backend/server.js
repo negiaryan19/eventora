@@ -1,31 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dns = require('dns');
-const https = require('https');
-const axios = require('axios');
 require('dotenv').config();
 const path = require('path');
 
-// --- BYPASS ISP DNS BLOCKS (India TMDB/Gemini Fix) ---
-dns.setServers(['8.8.8.8', '8.8.4.4']);
-const customLookup = (hostname, options, callback) => {
-  dns.resolve4(hostname, (err, addresses) => {
-    if (err || !addresses.length) {
-      return dns.lookup(hostname, options, callback); // fallback
-    }
-    callback(null, addresses[0], 4);
-  });
-};
-axios.defaults.httpsAgent = new https.Agent({ lookup: customLookup });
-// ------------------------------------------------------
-
 const authRoutes = require('./routes/auth');
 const movieRoutes = require('./routes/movies');
-const eventRoutes = require('./routes/events');
 const aiRoutes = require('./routes/ai');
 const bookingRoutes = require('./routes/booking');
 const favoriteRoutes = require('./routes/favorites');
+const showtimeRoutes = require('./routes/showtimes');
 
 const app = express();
 
@@ -39,14 +23,18 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/movies', movieRoutes);
-app.use('/api/events', eventRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/booking', bookingRoutes);
 app.use('/api/favorites', favoriteRoutes);
+app.use('/api/showtimes', showtimeRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: 'API route not found.' });
 });
 
 // Serve frontend static files

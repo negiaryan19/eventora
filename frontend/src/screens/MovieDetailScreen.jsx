@@ -7,6 +7,48 @@ import MovieCard from '../components/MovieCard';
 import Loader from '../components/Loader';
 import '../styles/MovieDetail.css';
 
+const GENRE_LABELS = {
+  12: 'Adventure',
+  14: 'Fantasy',
+  16: 'Animation',
+  18: 'Drama',
+  27: 'Horror',
+  28: 'Action',
+  35: 'Comedy',
+  36: 'History',
+  53: 'Thriller',
+  80: 'Crime',
+  878: 'Sci-Fi',
+  9648: 'Mystery',
+  10749: 'Romance',
+};
+
+function getInitials(name = '') {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join('') || '?';
+}
+
+function CastAvatar({ person }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const profileUrl = person.profile_path ? `${TMDB_IMAGE}${person.profile_path}` : '';
+
+  if (profileUrl && !imageFailed) {
+    return (
+      <img
+        src={profileUrl}
+        alt={person.name}
+        onError={() => setImageFailed(true)}
+      />
+    );
+  }
+
+  return <div className="cast-avatar-fallback">{getInitials(person.name)}</div>;
+}
+
 function MovieDetailScreen() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,8 +59,13 @@ function MovieDetailScreen() {
   const [loading, setLoading] = useState(true);
   const [showTrailer, setShowTrailer] = useState(false);
   const [isFav, setIsFav] = useState(false);
+  const [posterFailed, setPosterFailed] = useState(false);
+  const [backdropFailed, setBackdropFailed] = useState(false);
 
   useEffect(() => {
+    setShowTrailer(false);
+    setPosterFailed(false);
+    setBackdropFailed(false);
     fetchMovie();
     fetchSimilar();
     window.scrollTo(0, 0);
@@ -77,24 +124,50 @@ function MovieDetailScreen() {
   if (!movie) return <div style={{ textAlign: 'center', padding: 80, color: 'var(--muted)' }}>Movie not found</div>;
 
   const backdrop = movie.backdrop_path ? `${TMDB_IMAGE_ORIGINAL}${movie.backdrop_path}` : '';
-  const poster = movie.poster_path ? `${TMDB_IMAGE}${movie.poster_path}` : 'https://via.placeholder.com/300x450?text=No+Poster';
+  const poster = movie.poster_path ? `${TMDB_IMAGE}${movie.poster_path}` : '';
+  const hasBackdrop = backdrop && !backdropFailed;
+  const hasPoster = poster && !posterFailed;
   const year = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
   const runtime = movie.runtime ? `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m` : '';
   const rating = movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A';
+  const trailerSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.trailerSearchQuery || `${movie.title} official trailer`)}`;
+  const fallbackGenre = GENRE_LABELS[movie.genre_ids?.[0]] || movie.genres?.[0]?.name || movie.language || 'Movie';
 
   return (
     <div className="movie-detail" id="movie-detail">
-      {backdrop && (
-        <div className="movie-backdrop">
-          <img src={backdrop} alt={movie.title} />
-          <div className="movie-backdrop-gradient" />
-        </div>
-      )}
+      <div className={`movie-backdrop ${hasBackdrop ? '' : 'movie-backdrop-fallback'}`}>
+        {hasBackdrop ? (
+          <img
+            src={backdrop}
+            alt={movie.title}
+            onError={() => setBackdropFailed(true)}
+          />
+        ) : (
+          <div className="movie-backdrop-fallback-content">
+            <span>{fallbackGenre}</span>
+            <strong>{movie.title}</strong>
+            <small>{year}</small>
+          </div>
+        )}
+        <div className="movie-backdrop-gradient" />
+      </div>
 
       <div className="movie-detail-content">
         <div className="movie-detail-top">
-          <div className="movie-detail-poster">
-            <img src={poster} alt={movie.title} />
+          <div className={`movie-detail-poster ${hasPoster ? '' : 'movie-detail-poster-fallback'}`}>
+            {hasPoster ? (
+              <img
+                src={poster}
+                alt={movie.title}
+                onError={() => setPosterFailed(true)}
+              />
+            ) : (
+              <div className="detail-poster-fallback">
+                <span>{fallbackGenre}</span>
+                <strong>{movie.title}</strong>
+                <small>{year}</small>
+              </div>
+            )}
           </div>
           <div className="movie-detail-info">
             <h1 className="movie-detail-title">{movie.title}</h1>
@@ -127,6 +200,11 @@ function MovieDetailScreen() {
                   ▶ Watch Trailer
                 </button>
               )}
+              {!movie.trailerKey && (
+                <a className="trailer-btn" href={trailerSearchUrl} target="_blank" rel="noreferrer" id="trailer-search-link">
+                  Find Trailer
+                </a>
+              )}
               <button className="fav-detail-btn" onClick={handleFavorite} id="fav-detail-btn">
                 {isFav ? '❤️' : '🤍'}
               </button>
@@ -142,13 +220,10 @@ function MovieDetailScreen() {
               {movie.cast.map((person) => (
                 <div className="cast-member" key={person.id}>
                   <div className="cast-avatar">
-                    <img
-                      src={person.profile_path ? `${TMDB_IMAGE}${person.profile_path}` : 'https://via.placeholder.com/72?text=?'}
-                      alt={person.name}
-                    />
+                    <CastAvatar person={person} />
                   </div>
                   <p className="cast-name">{person.name}</p>
-                  <p className="cast-character">{person.character}</p>
+                  <p className="cast-character" title={person.character}>{person.character}</p>
                 </div>
               ))}
             </div>

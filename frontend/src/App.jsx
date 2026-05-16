@@ -5,6 +5,7 @@ import DiscoverScreen from './screens/DiscoverScreen';
 import MovieDetailScreen from './screens/MovieDetailScreen';
 import SeatSelectionScreen from './screens/SeatSelectionScreen';
 import TicketsScreen from './screens/TicketsScreen';
+import TicketVerifyScreen from './screens/TicketVerifyScreen';
 import AuthScreen from './screens/AuthScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -37,6 +38,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/ticket/:ticketCode" element={<TicketVerifyScreen />} />
           <Route
             path="/auth"
             element={isAuthenticated ? <Navigate to="/" replace /> : <AuthScreen />}

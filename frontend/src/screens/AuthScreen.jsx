@@ -76,7 +76,7 @@ function AuthScreen() {
       <div className="auth-left">
         <div className="auth-branding">
           <h1>🎬 EVENTORA</h1>
-          <p>Your AI-powered gateway to movies, events, and unforgettable experiences.</p>
+          <p>Your AI-powered gateway to movies, showtimes, and unforgettable tickets.</p>
         </div>
       </div>
 

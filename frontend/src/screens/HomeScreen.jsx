@@ -6,12 +6,43 @@ import MovieCard from '../components/MovieCard';
 import Loader from '../components/Loader';
 import '../styles/HomeScreen.css';
 
+const AI_FALLBACK_RESULTS = [
+  {
+    title: 'Premium multiplex night',
+    type: 'movie',
+    reason: 'Comfortable seats, clean sound, and an easy plan when the live AI service is not available.',
+    venue: 'PVR / INOX near you',
+    estimatedPrice: 450,
+    rating: 4.5,
+    emoji: '🍿',
+  },
+  {
+    title: 'Dhurandhar',
+    type: 'movie',
+    reason: 'A high-energy action thriller pick for an evening show.',
+    venue: 'PVR: Orion Mall, Bengaluru',
+    estimatedPrice: 250,
+    rating: 7.1,
+    emoji: '🎬',
+  },
+  {
+    title: 'Karuppu',
+    type: 'movie',
+    reason: 'A big-screen fantasy-action option with a theatrical feel.',
+    venue: 'INOX: Megaplex Mall of Asia Bangalore',
+    estimatedPrice: 250,
+    rating: 7.4,
+    emoji: '🎟️',
+  },
+];
+
 function HomeScreen() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [trending, setTrending] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
+  const [isFallbackUpcoming, setIsFallbackUpcoming] = useState(false);
   const [loadingMovies, setLoadingMovies] = useState(true);
 
   // AI state
@@ -38,6 +69,7 @@ function HomeScreen() {
       setTrending(trendRes.data.results || []);
       setNowPlaying(npRes.data.results || []);
       setUpcoming(upRes.data.results || []);
+      setIsFallbackUpcoming(upRes.data.source === 'fallback');
     } catch (err) {
       console.error('Failed to fetch movies:', err);
     } finally {
@@ -65,9 +97,10 @@ function HomeScreen() {
         genre: aiGenre,
         groupType: 'friends',
       });
-      setAiResults(Array.isArray(data) ? data : []);
+      const recommendations = Array.isArray(data) ? data : [];
+      setAiResults(recommendations.length ? recommendations : AI_FALLBACK_RESULTS);
     } catch (err) {
-      setAiError('AI recommendation failed. Please try again.');
+      setAiResults(AI_FALLBACK_RESULTS);
       console.error('AI error:', err);
     } finally {
       setAiLoading(false);
@@ -84,19 +117,21 @@ function HomeScreen() {
           </div>
           <h1>FIND YOUR NEXT MOMENT</h1>
           <p className="hero-subtitle">
-            Discover movies, events, and experiences — personalized by AI, just for you.
+            Discover movies, showtimes, and tickets — personalized by AI, just for you.
           </p>
           <form className="hero-search" onSubmit={handleSearch}>
             <input
               type="text"
-              placeholder="Search movies, events, experiences..."
+              placeholder="Search movies, cast, genres..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               id="hero-search-input"
             />
             <button type="submit" id="hero-search-btn">Search</button>
+
           </form>
         </div>
+        
       </section>
 
       {/* AI Concierge */}
@@ -215,7 +250,7 @@ function HomeScreen() {
 
           <section className="home-section" id="upcoming-section">
             <h2 className="section-title">
-              📅 <span className="accent">COMING</span> SOON
+              📅 <span className="accent">{isFallbackUpcoming ? 'FAN' : 'COMING'}</span> {isFallbackUpcoming ? 'FAVORITES' : 'SOON'}
             </h2>
             <div className="scroll-row">
               {upcoming.slice(0, 15).map((movie) => (

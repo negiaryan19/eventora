@@ -57,6 +57,7 @@ function DiscoverScreen() {
 
   const searchMovies = async (q) => {
     if (!q.trim()) return;
+    setActiveGenre(0);
     setLoading(true);
     try {
       const { data } = await axios.get(`${API_BASE}/movies/search?q=${encodeURIComponent(q)}`);
@@ -71,6 +72,7 @@ function DiscoverScreen() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim()) {
+      setActiveGenre(0);
       searchMovies(query);
     }
   };
@@ -79,6 +81,7 @@ function DiscoverScreen() {
     const val = e.target.value;
     setSortBy(val);
     setQuery('');
+    setActiveGenre(0);
     fetchBySort(val);
   };
 

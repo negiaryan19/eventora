@@ -141,9 +141,17 @@ router.post('/forgot-password', async (req, res) => {
 
     // Send email using our existing utility function
     const { sendPasswordResetEmail } = require('../utils/email');
-    sendPasswordResetEmail(user.email, otp).catch(() => {});
+    const emailSent = await sendPasswordResetEmail(user.email, otp);
+    if (!emailSent) {
+      console.warn(`Password reset OTP generated but email was not delivered for ${user.email}`);
+    }
 
-    res.json({ message: 'Password reset OTP sent to your email.' });
+    res.json({
+      message: emailSent
+        ? 'Password reset OTP sent to your email.'
+        : 'OTP generated, but email delivery failed. Check backend console for development OTP.',
+      emailSent,
+    });
   } catch (err) {
     console.error('Forgot password error:', err);
     res.status(500).json({ error: 'Server error during forgot password.' });
